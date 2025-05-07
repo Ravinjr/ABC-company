@@ -7,6 +7,7 @@ import com.order.order.services.OrderService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
@@ -14,10 +15,12 @@ import java.util.List;
 public class OrderServiceIMPL implements OrderService {
     private final OrderRepository orderRepository;
     private final ModelMapper modelMapper;
+    private final WebClient webClient;
 
-    public OrderServiceIMPL(OrderRepository orderRepository, ModelMapper modelMapper) {
+    public OrderServiceIMPL(OrderRepository orderRepository, ModelMapper modelMapper, WebClient webClient) {
         this.orderRepository = orderRepository;
         this.modelMapper = modelMapper;
+        this.webClient = webClient;
     }
 
     @Override
@@ -45,8 +48,10 @@ public class OrderServiceIMPL implements OrderService {
     }
 
     @Override
-    public OrderDTO getOrderById(int id) {
-        Orders order = orderRepository.getOrdersById(id);
+    public OrderDTO getOrdersByOrderId(int orderId) {
+        Orders order = orderRepository.getOrdersByOrderId(orderId);
         return modelMapper.map(order, OrderDTO.class);
     }
+
+
 }

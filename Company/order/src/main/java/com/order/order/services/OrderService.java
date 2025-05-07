@@ -15,5 +15,5 @@ public interface OrderService {
 
     String deleteOrder(OrderDTO orderDTO, int id);
 
-    OrderDTO getOrderById(int id);
+    OrderDTO getOrdersByOrderId(int orderId);
 }

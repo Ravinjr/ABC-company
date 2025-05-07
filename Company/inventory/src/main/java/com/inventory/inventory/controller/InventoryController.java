@@ -15,24 +15,28 @@ public class InventoryController {
     public InventoryController(InventoryService inventoryService) {
         this.inventoryService = inventoryService;
     }
-    @GetMapping(path = "getitems")
+    @GetMapping(path = "/get-items")
     public List<InventoryDTO> getItems(){
         return inventoryService.getItems();
     }
+
     @PostMapping(path = {"/add-item"})
     public InventoryDTO addItem(@RequestBody InventoryDTO inventoryDTO){
         return inventoryService.addItem(inventoryDTO);
     }
+
     @PutMapping(path = {"/update-item"})
     public InventoryDTO updateOrder(@RequestBody InventoryDTO inventoryDTO){
         return inventoryService.updateItem(inventoryDTO);
     }
+
     @DeleteMapping(path = {"/delete-item/{id}"})
     public String deleteOrder(@RequestBody InventoryDTO inventoryDTO, @PathVariable int id){
         return inventoryService.deleteItem(inventoryDTO,id);
     }
-    @GetMapping(path = {"/get-inventory-by-id/{id}"})
-    public InventoryDTO getInventoryById(@PathVariable int id){
-        return inventoryService.getInventoryById(id);
+
+    @GetMapping(path = {"/get-inventory-by-id/{itemId}"})
+    public InventoryDTO getItemByItemId(@PathVariable Integer itemId){
+        return inventoryService.getItemByItemId(itemId);
     }
 }

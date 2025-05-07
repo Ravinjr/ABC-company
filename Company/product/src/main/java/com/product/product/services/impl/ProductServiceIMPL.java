@@ -46,4 +46,10 @@ public class ProductServiceIMPL implements ProductService {
         return "Product deleted";
     }
 
+    @Override
+    public ProductDTO getProductByProductId(Integer productId) {
+        Product product = productRepo.findProductById(productId);
+        return modelMapper.map(product, ProductDTO.class);
+    }
+
 }

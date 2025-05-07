@@ -45,8 +45,10 @@ public class InventoryServiceIMPL implements InventoryService {
     }
 
     @Override
-    public InventoryDTO getInventoryById(int id) {
-        Inventory inventory = inventoryRepository.getInventoryById(id);
+    public InventoryDTO getItemByItemId(Integer itemId) {
+        Inventory inventory = inventoryRepository.getItemByItemId(itemId);
         return modelMapper.map(inventory, InventoryDTO.class);
     }
+
+
 }

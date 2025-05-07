@@ -13,4 +13,6 @@ public interface ProductService {
     ProductDTO updateProduct(ProductDTO productDTO);
 
     String deleteProduct(ProductDTO productDTO);
+
+    ProductDTO getProductByProductId(Integer productId);
 }
