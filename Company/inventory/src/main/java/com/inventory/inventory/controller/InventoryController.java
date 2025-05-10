@@ -35,7 +35,7 @@ public class InventoryController {
         return inventoryService.deleteItem(inventoryDTO,id);
     }
 
-    @GetMapping(path = {"/get-inventory-by-id/{itemId}"})
+    @GetMapping(path = {"/get-item-by-item-id/{itemId}"})
     public InventoryDTO getItemByItemId(@PathVariable Integer itemId){
         return inventoryService.getItemByItemId(itemId);
     }

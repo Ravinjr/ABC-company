@@ -1,5 +1,6 @@
 package com.order.order.controller;
 
+import com.order.order.common.OrderResponse;
 import com.order.order.dto.OrderDTO;
 import com.order.order.services.OrderService;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +17,13 @@ public class OrderController {
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
-    @GetMapping(path = {"getAll"})
+    @GetMapping(path = {"/getAll"})
     public List<OrderDTO> getOrders(){
         return orderService.getOrders();
     }
 
     @PostMapping(path = {"/save"})
-    public OrderDTO saveOrder(@RequestBody OrderDTO orderDTO){
+    public OrderResponse saveOrder(@RequestBody OrderDTO orderDTO){
 //        Integer itemId = orderDTO.getItemId();
         return orderService.saveOrder(orderDTO);
     }

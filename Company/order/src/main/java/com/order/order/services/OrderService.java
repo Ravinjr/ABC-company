@@ -1,5 +1,6 @@
 package com.order.order.services;
 
+import com.order.order.common.OrderResponse;
 import com.order.order.dto.OrderDTO;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 public interface OrderService {
     List<OrderDTO> getOrders();
 
-    OrderDTO saveOrder(OrderDTO orderDTO);
+    OrderResponse saveOrder(OrderDTO orderDTO);
 
     OrderDTO updateOrder(OrderDTO orderDTO);
 
