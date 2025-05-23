@@ -1,12 +1,5 @@
 package com.inventory.inventory.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class InventoryDTO {
     private int id;
     private int itemId;
@@ -42,6 +35,16 @@ public class InventoryDTO {
     }
 
     public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public InventoryDTO() {
+    }
+
+    public InventoryDTO(int id, int itemId, int productId, int quantity) {
+        this.id = id;
+        this.itemId = itemId;
+        this.productId = productId;
         this.quantity = quantity;
     }
 }

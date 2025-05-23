@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Orders {
     @Id
     private int id;
@@ -46,6 +44,16 @@ public class Orders {
     }
 
     public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public Orders() {
+    }
+
+    public Orders(int id, int itemId, String orderDate, int amount) {
+        this.id = id;
+        this.itemId = itemId;
+        this.orderDate = orderDate;
         this.amount = amount;
     }
 }

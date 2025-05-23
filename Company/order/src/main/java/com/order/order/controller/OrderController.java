@@ -1,10 +1,11 @@
 package com.order.order.controller;
 
+import com.base.base.dto.OrderEventDTO;
 import com.order.order.common.OrderResponse;
 import com.order.order.dto.OrderDTO;
+import com.order.order.kafka.OrderProducer;
 import com.order.order.services.OrderService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
@@ -13,9 +14,11 @@ import java.util.List;
 @CrossOrigin
 public class OrderController {
     private final OrderService orderService;
+    private final OrderProducer orderProducer;
 
-    public OrderController(OrderService orderService) {
+    public OrderController(OrderService orderService, OrderProducer orderProducer) {
         this.orderService = orderService;
+        this.orderProducer = orderProducer;
     }
     @GetMapping(path = {"/getAll"})
     public List<OrderDTO> getOrders(){
@@ -24,7 +27,12 @@ public class OrderController {
 
     @PostMapping(path = {"/save"})
     public OrderResponse saveOrder(@RequestBody OrderDTO orderDTO){
-//        Integer itemId = orderDTO.getItemId();
+        OrderEventDTO orderEventDTO = new OrderEventDTO();
+        orderEventDTO.setMessage("Order is commited.");
+        orderEventDTO.setStatus("pending");
+//        orderProducer.sendMessage(orderEventDTO);
+
+        orderProducer.sendMessage(orderEventDTO);
         return orderService.saveOrder(orderDTO);
     }
 

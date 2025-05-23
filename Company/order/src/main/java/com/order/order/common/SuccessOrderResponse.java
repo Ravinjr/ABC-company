@@ -2,8 +2,6 @@ package com.order.order.common;
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.order.order.dto.OrderDTO;
-import lombok.Getter;
-
 
 public class SuccessOrderResponse implements OrderResponse {
     @JsonUnwrapped

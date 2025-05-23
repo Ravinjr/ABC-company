@@ -8,9 +8,6 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Inventory {
     @Id
     private int id;
@@ -47,6 +44,16 @@ public class Inventory {
     }
 
     public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Inventory() {
+    }
+
+    public Inventory(int id, int itemId, int productId, int quantity) {
+        this.id = id;
+        this.itemId = itemId;
+        this.productId = productId;
         this.quantity = quantity;
     }
 }

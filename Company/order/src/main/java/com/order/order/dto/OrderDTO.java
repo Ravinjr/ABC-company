@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class OrderDTO {
     private int id;
     private int itemId;
@@ -43,5 +41,15 @@ public class OrderDTO {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public OrderDTO(int id, int itemId, String orderDate, int amount) {
+        this.id = id;
+        this.itemId = itemId;
+        this.orderDate = orderDate;
+        this.amount = amount;
+    }
+
+    public OrderDTO() {
     }
 }
